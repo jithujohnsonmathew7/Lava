@@ -696,12 +696,18 @@ class _ProductCard extends StatelessWidget {
                 children: [
                   Container(
                     color: const Color(0xFFF1F5F9),
-                    child: const Center(
-                      child: Icon(
-                        Icons.image_outlined,
-                        size: 64,
-                        color: Color(0xFFCBD5E1),
-                      ),
+                    child: Image.network(
+                      product.image,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return const Center(
+                          child: Icon(
+                            Icons.image_outlined,
+                            size: 64,
+                            color: Color(0xFFCBD5E1),
+                          ),
+                        );
+                      },
                     ),
                   ),
                   if (product.badge.isNotEmpty)
@@ -824,12 +830,18 @@ class ProductDetailScreen extends StatelessWidget {
                           children: [
                             Container(
                               color: const Color(0xFFF1F5F9),
-                              child: const Center(
-                                child: Icon(
-                                  Icons.image_outlined,
-                                  size: 120,
-                                  color: Color(0xFFCBD5E1),
-                                ),
+                              child: Image.network(
+                                product.image,
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return const Center(
+                                    child: Icon(
+                                      Icons.image_outlined,
+                                      size: 120,
+                                      color: Color(0xFFCBD5E1),
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                             if (product.badge.isNotEmpty)
@@ -1071,10 +1083,21 @@ class _CartLineItem extends StatelessWidget {
                 color: const Color(0xFFF1F5F9),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: const Icon(
-                Icons.image_outlined,
-                size: 32,
-                color: Color(0xFFCBD5E1),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.network(
+                  product.image,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Center(
+                      child: Icon(
+                        Icons.image_outlined,
+                        size: 32,
+                        color: Color(0xFFCBD5E1),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
             const SizedBox(width: 16),
@@ -1762,6 +1785,7 @@ class Product {
   final double price;
   final String description;
   final String badge;
+  final String image;
   final List<String> highlights;
 
   const Product({
@@ -1770,6 +1794,7 @@ class Product {
     required this.price,
     required this.description,
     this.badge = '',
+    required this.image,
     required this.highlights,
   });
 
@@ -1780,6 +1805,7 @@ class Product {
       price: 129.99,
       description: 'Ergonomic task chair with lumbar support and breathable mesh. Perfect for long work sessions.',
       badge: 'Best Seller',
+      image: 'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=500&h=500&fit=crop',
       highlights: [
         'Adjustable lumbar support',
         'Breathable mesh back',
@@ -1793,6 +1819,7 @@ class Product {
       price: 89.99,
       description: 'Minimalist LED desk lamp with adjustable brightness and color temperature control.',
       badge: 'New',
+      image: 'https://images.unsplash.com/photo-1565636192335-14fe8d58e1a8?w=500&h=500&fit=crop',
       highlights: [
         'Dimmable LED',
         'USB charging port',
@@ -1805,6 +1832,7 @@ class Product {
       category: 'Accessories',
       price: 59.99,
       description: 'Durable canvas tote bag with leather accents. Spacious interior for everyday essentials.',
+      image: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=500&h=500&fit=crop',
       highlights: [
         'Premium canvas',
         'Leather handles',
@@ -1818,6 +1846,7 @@ class Product {
       price: 119.99,
       description: 'Comfortable athletic sneakers with responsive cushioning and modern design.',
       badge: 'Trending',
+      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=500&fit=crop',
       highlights: [
         'Breathable knit upper',
         'Cushioned midsole',
@@ -1830,6 +1859,7 @@ class Product {
       category: 'Home',
       price: 49.99,
       description: 'Soft knit throw blanket made from organic cotton. Perfect for cozy evenings.',
+      image: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=500&h=500&fit=crop',
       highlights: [
         'Organic cotton',
         'Machine washable',
@@ -1842,6 +1872,7 @@ class Product {
       category: 'Drinkware',
       price: 34.99,
       description: 'Insulated stainless steel water bottle that keeps drinks cold for 24 hours.',
+      image: 'https://images.unsplash.com/photo-1602143407151-7e406b667b0e?w=500&h=500&fit=crop',
       highlights: [
         'Double-wall insulated',
         'BPA-free',
