@@ -11,7 +11,7 @@ class PortfolioApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Ava Porter — Product Designer',
+      title: 'Jithu JM — Product Designer',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
@@ -138,7 +138,7 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             alignment: Alignment.center,
             child: Text(
-              'AP',
+              'JJ',
               style: GoogleFonts.manrope(
                 fontSize: 16,
                 fontWeight: FontWeight.w800,
@@ -148,7 +148,7 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           const SizedBox(width: 16),
           Text(
-            'Ava Porter — Product Designer',
+            'Jithu JM — Product Designer',
             style: GoogleFonts.manrope(
               fontSize: 16,
               fontWeight: FontWeight.w700,
